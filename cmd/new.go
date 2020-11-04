@@ -19,17 +19,19 @@ import (
 	"errors"
 	"fmt"
 	"github.com/petomalina/genny/internal/cmd_new"
+	"github.com/petomalina/genny/internal/perform"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 	"io/ioutil"
 	"os"
-	"os/exec"
+	"path/filepath"
 )
 
 // newCmd represents the cmd_new command
 var newCmd = &cobra.Command{
 	Use:   "new <name>",
 	Short: "Creates a new genny application scaffold without services",
-	Long: `A new application scaffold without services will be created`,
+	Long:  `A new application scaffold without services will be created`,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 {
 			return errors.New("please specify a name of the project")
@@ -38,7 +40,10 @@ var newCmd = &cobra.Command{
 		return nil
 	},
 	RunE: func(cmd *cobra.Command, args []string) error {
-		projectName := args[0]
+		gomodule := args[0]
+		projectName := filepath.Base(gomodule)
+		viper.Set("project", projectName)
+
 		folders := []string{
 			fmt.Sprintf("%s/infrastructure", projectName),
 			fmt.Sprintf("%s/services", projectName),
@@ -56,8 +61,8 @@ var newCmd = &cobra.Command{
 		}
 
 		files := map[string]string{
-			fmt.Sprintf("%s/README.md", projectName): fmt.Sprintf(`# %s`, projectName),
-			fmt.Sprintf("%s/.gitignore", projectName): cmd_new.DefaultGitignoreContents(),
+			fmt.Sprintf("%s/README.md", projectName):     fmt.Sprintf(`# %s`, projectName),
+			fmt.Sprintf("%s/.gitignore", projectName):    cmd_new.DefaultGitignoreContents(),
 			fmt.Sprintf("%s/apis/Makefile", projectName): cmd_new.DefaultMakefileContents(projectName),
 		}
 
@@ -69,18 +74,20 @@ var newCmd = &cobra.Command{
 			}
 		}
 
-		fmt.Println("Running git init ...")
-		// initialize an empty git repo in the directory
-		gitInit := exec.Command("git", "init", projectName)
-		bb, err := gitInit.CombinedOutput()
+		err := perform.Command("go", []string{"mod", "init", gomodule}, perform.Dir(projectName))
 		if err != nil {
 			return err
 		}
-		fmt.Println(string(bb))
+
+		// initialize an empty git repo in the directory
+		err = perform.Command("git", []string{"init", projectName})
+		if err != nil {
+			return err
+		}
 
 		fmt.Println(fmt.Sprintf("A new project '%s' was created, run 'cd %s' before you continue", projectName, projectName))
 
-		return nil
+		return viper.WriteConfigAs(filepath.Join(projectName, ".genny.json"))
 	},
 }
 

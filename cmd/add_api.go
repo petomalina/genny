@@ -19,7 +19,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/petomalina/genny/internal/cmd_api"
-	"github.com/petomalina/genny/internal/configutil"
+	"github.com/spf13/viper"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -65,21 +65,23 @@ monitoring/v1/monitoring.proto (that will include the gRPC service def.)`,
 		// documents/sheets/v1 becomes only sheets
 		apiName := filepath.Base(filepath.Dir(apiPath))
 
+		apiVersion := filepath.Base(apiPath)
+
 		err := os.MkdirAll(filepath.Join("apis/proto", apiPath), os.ModePerm)
 		if err != nil {
 			return err
 		}
 
 		err = ioutil.WriteFile(filepath.Join("apis/proto", apiPath, apiName+".proto"),
-			[]byte(cmd_api.ServiceDefinition(apiName)),
+			[]byte(cmd_api.ServiceDefinition(apiName, apiVersion)),
 			os.ModePerm,
 		)
 		if err != nil {
 			return err
 		}
 
-		// append the generated api into apis so makefile can work with this
-		return configutil.AppendLine("apis/apis", apiPath)
+		viper.Set("apis", append(viper.GetStringSlice("apis"), apiPath))
+		return viper.WriteConfig()
 	},
 }
 

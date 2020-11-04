@@ -4,7 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fefff267-606a-4141-a2c4-9ffdf514bffc" name="Default Changelist" comment="" />
+    <list default="true" id="fefff267-606a-4141-a2c4-9ffdf514bffc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/internal/perform/perform.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/.gitmodules" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/apis/3rdparty/api-common-protos" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/genny.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/genny.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/add_api.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/add_api.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/add_proto.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/add_proto.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/new.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/new.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/root.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/root.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/cmd_api/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/cmd_api/api.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/cmd_new/new.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/cmd_new/new.go" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -18,6 +34,9 @@
     </option>
   </component>
   <component name="GOROOT" path="/usr/lib/go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
   <component name="GoLibraries">
     <option name="indexEntireGoPath" value="false" />
   </component>
@@ -26,6 +45,7 @@
     <option name="namespace" value="default" />
   </component>
   <component name="ProjectId" id="1jHqMcg9Ogj5g7T94HBZaP4EFl0" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -34,17 +54,30 @@
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="configurable.Global.GOPATH.is.expanded" value="true" />
+    <property name="configurable.Module.GOPATH.is.expanded" value="false" />
+    <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
   <component name="WindowStateProjectService">
-    <state x="623" y="230" width="672" height="678" key="search.everywhere.popup" timestamp="1603809686478">
-      <screen x="0" y="0" width="1920" height="1043" />
+    <state x="650" y="348" width="616" height="411" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1604527304820">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="650" y="348" width="616" height="411" key="#com.intellij.fileTypes.FileTypeChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1604527304820" />
+    <state x="444" y="186" width="1031" height="735" key="SettingsEditor" timestamp="1604527769196">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="444" y="186" width="1031" height="735" key="SettingsEditor/0.28.1920.1052@0.28.1920.1052" timestamp="1604527769196" />
+    <state x="623" y="260" width="672" height="684" key="search.everywhere.popup" timestamp="1604533682822">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="623" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1043@0.0.1920.1043" timestamp="1603809686478" />
+    <state x="623" y="260" width="672" height="684" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1604533682822" />
   </component>
 </project>

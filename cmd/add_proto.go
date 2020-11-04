@@ -18,9 +18,9 @@ package cmd
 import (
 	"errors"
 	"fmt"
-	"github.com/petomalina/genny/internal/configutil"
+	"github.com/petomalina/genny/internal/perform"
 	"github.com/spf13/cobra"
-	"os/exec"
+	"github.com/spf13/viper"
 	"path/filepath"
 	"strings"
 )
@@ -62,19 +62,28 @@ genny add proto github.com/protocolbuffers/protobuf src`,
 			includePath = strings.Join(args[1:], " ")
 		}
 
-		fmt.Println("Running git submodule add for the repository ...")
-		gitAddSubmoduleCmd := exec.Command("git", "submodule", "add", moduleNameGit,
+		err := perform.Command("git", []string{
+			"submodule",
+			"add",
+			moduleNameGit,
 			fmt.Sprintf("./apis/3rdparty/%s", filepath.Base(moduleName)),
-		)
-		bb, err := gitAddSubmoduleCmd.CombinedOutput()
-		fmt.Println(string(bb))
+		})
 		if err != nil {
 			return err
 		}
 
-		// append the added module to the protomodules so we can address this file in
-		// includes inside Makefile
-		return configutil.AppendLine("apis/protomodules", filepath.Join("-I=3rdparty", filepath.Base(moduleName), includePath))
+		viper.Set(
+			"protomodules",
+			append(
+				viper.GetStringSlice("protomodules"),
+				filepath.Join(
+					"3rdparty",
+					filepath.Base(moduleName),
+					includePath,
+				),
+			),
+		)
+		return viper.WriteConfig()
 	},
 }
 

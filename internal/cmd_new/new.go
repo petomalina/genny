@@ -11,6 +11,7 @@ func DefaultMakefileContents(projectName string) string {
 SHELL=/bin/bash
 
 PROTO_INCLUDES=-I=proto -I=. $(shell cat protomodules | tr '\n' ' ')
+PROTO_APIS=$(shell cat protoapis | tr '\n' ' ')
 PROTO_GRPC_ARGS=paths=source_relative
 ##
 ##  \e[1mTargets\e[0m
