@@ -3,23 +3,23 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
+  <component name="BranchesTreeState">
+    <expand />
+    <select />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="fefff267-606a-4141-a2c4-9ffdf514bffc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/internal/perform/perform.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/protoc.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/run.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/internal/types/config.go" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test/.gitmodules" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/test/apis/3rdparty/api-common-protos" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/genny.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/genny.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/add_api.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/add_api.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/add_proto.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/add_proto.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/new.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/new.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/root.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/root.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.mod" beforeDir="false" afterPath="$PROJECT_DIR$/go.mod" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/go.sum" beforeDir="false" afterPath="$PROJECT_DIR$/go.sum" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/cmd_api/api.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/cmd_api/api.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/internal/cmd_new/new.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/cmd_new/new.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,9 +59,24 @@
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
   </component>
@@ -74,6 +89,10 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="444" y="186" width="1031" height="735" key="SettingsEditor/0.28.1920.1052@0.28.1920.1052" timestamp="1604527769196" />
+    <state x="661" y="239" width="598" height="566" key="find.popup" timestamp="1605127260250">
+      <screen x="0" y="0" width="1920" height="1043" />
+    </state>
+    <state x="661" y="239" width="598" height="566" key="find.popup/0.0.1920.1043@0.0.1920.1043" timestamp="1605127260250" />
     <state x="623" y="260" width="672" height="684" key="search.everywhere.popup" timestamp="1604533682822">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>

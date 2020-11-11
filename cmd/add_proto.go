@@ -20,7 +20,6 @@ import (
 	"fmt"
 	"github.com/petomalina/genny/internal/perform"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 	"path/filepath"
 	"strings"
 )
@@ -72,18 +71,15 @@ genny add proto github.com/protocolbuffers/protobuf src`,
 			return err
 		}
 
-		viper.Set(
-			"protomodules",
-			append(
-				viper.GetStringSlice("protomodules"),
-				filepath.Join(
-					"3rdparty",
-					filepath.Base(moduleName),
-					includePath,
-				),
+		conf.ProtoModules = append(
+			conf.ProtoModules,
+			filepath.Join(
+				"3rdparty",
+				filepath.Base(moduleName),
+				includePath,
 			),
 		)
-		return viper.WriteConfig()
+		return writeConfig()
 	},
 }
 

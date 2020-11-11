@@ -21,7 +21,6 @@ import (
 	"github.com/petomalina/genny/internal/cmd_new"
 	"github.com/petomalina/genny/internal/perform"
 	"github.com/spf13/cobra"
-	"github.com/spf13/viper"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -42,7 +41,7 @@ var newCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		gomodule := args[0]
 		projectName := filepath.Base(gomodule)
-		viper.Set("project", projectName)
+		conf.Project = projectName
 
 		folders := []string{
 			fmt.Sprintf("%s/infrastructure", projectName),
@@ -87,7 +86,7 @@ var newCmd = &cobra.Command{
 
 		fmt.Println(fmt.Sprintf("A new project '%s' was created, run 'cd %s' before you continue", projectName, projectName))
 
-		return viper.WriteConfigAs(filepath.Join(projectName, ".genny.json"))
+		return writeConfig(projectName)
 	},
 }
 

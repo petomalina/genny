@@ -19,7 +19,6 @@ import (
 	"errors"
 	"fmt"
 	"github.com/petomalina/genny/internal/cmd_api"
-	"github.com/spf13/viper"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -80,8 +79,8 @@ monitoring/v1/monitoring.proto (that will include the gRPC service def.)`,
 			return err
 		}
 
-		viper.Set("apis", append(viper.GetStringSlice("apis"), apiPath))
-		return viper.WriteConfig()
+		conf.APIs = append(conf.APIs, apiPath)
+		return writeConfig()
 	},
 }
 

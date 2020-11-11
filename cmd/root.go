@@ -16,9 +16,14 @@ limitations under the License.
 package cmd
 
 import (
+	"encoding/json"
 	"fmt"
+	"github.com/petomalina/genny/internal/types"
 	"github.com/spf13/cobra"
+	"io/ioutil"
 	"os"
+	"path/filepath"
+	"strings"
 
 	"github.com/spf13/viper"
 )
@@ -59,6 +64,8 @@ func init() {
 	rootCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
 
+var conf types.Config
+
 // initConfig reads in config file and ENV variables if set.
 func initConfig() {
 	viper.SetConfigType("json")
@@ -74,5 +81,22 @@ func initConfig() {
 	viper.AutomaticEnv() // read in environment variables that match
 
 	// If a config file is found, read it in.
-	viper.ReadInConfig()
+	err := viper.ReadInConfig()
+	if err != nil && !strings.Contains(err.Error(), "Not Found") {
+		panic(err)
+	}
+
+	err = viper.Unmarshal(&conf)
+	if err != nil {
+		panic(err)
+	}
+}
+
+func writeConfig(path ...string) error {
+	bb, err := json.MarshalIndent(&conf, "", "  ")
+	if err != nil {
+		return err
+	}
+
+	return ioutil.WriteFile(filepath.Join(append(path, ".genny.json")...), bb, os.ModePerm)
 }
