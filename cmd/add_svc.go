@@ -24,12 +24,12 @@ import (
 
 // svcCmd represents the svc command
 var svcCmd = &cobra.Command{
-	Use:   "svc <api>",
-	Short: "Adds a cmd_new microservice [into a specified cluster]",
-	Long: ``,
+	Use:   "svc <name>",
+	Short: "Adds a new microservice",
+	Long:  ``,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 {
-			return errors.New("please specify api to be implemented for the service")
+			return errors.New("please specify a service name")
 		}
 
 		return nil
@@ -41,14 +41,4 @@ var svcCmd = &cobra.Command{
 
 func init() {
 	addCmd.AddCommand(svcCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// svcCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// svcCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }
