@@ -3,23 +3,17 @@
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
-  <component name="BranchesTreeState">
-    <expand />
-    <select />
-  </component>
   <component name="ChangeListManager">
     <list default="true" id="fefff267-606a-4141-a2c4-9ffdf514bffc" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/cmd/protoc.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cmd/run.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/internal/types/config.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/.gitmodules" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/apis/3rdparty/api-common-protos" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/cmd/config.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Makefile" beforeDir="false" afterPath="$PROJECT_DIR$/Makefile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/add.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/add.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/add_api.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/add_api.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/add_proto.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/add_proto.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/cmd/add_svc.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/add_svc.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/new.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/new.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmd/root.go" beforeDir="false" afterPath="$PROJECT_DIR$/cmd/root.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/internal/perform/perform.go" beforeDir="false" afterPath="$PROJECT_DIR$/internal/perform/perform.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +29,11 @@
   </component>
   <component name="GOROOT" path="/usr/lib/go" />
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/test" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="GoLibraries">
@@ -53,29 +52,20 @@
   <component name="PropertiesComponent">
     <property name="DefaultGoTemplateProperty" value="Go File" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="TF_FMT" value="false" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="configurable.Global.GOPATH.is.expanded" value="true" />
     <property name="configurable.Module.GOPATH.is.expanded" value="false" />
     <property name="configurable.Project.GOPATH.is.expanded" value="true" />
     <property name="go.import.settings.migrated" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
-    <property name="node.js.detected.package.eslint" value="true" />
-    <property name="node.js.path.for.package.eslint" value="project" />
-    <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="go.vgo" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-    <option name="oldMeFiltersMigrated" value="true" />
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="feat: added support for gomod and running commands now results in their output being colored. Also added command executions to the output" />
+    <MESSAGE value="refactor(configutil): removed deprecated configutil, viper is now used instead for writing configs" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor(configutil): removed deprecated configutil, viper is now used instead for writing configs" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -85,18 +75,22 @@
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="650" y="348" width="616" height="411" key="#com.intellij.fileTypes.FileTypeChooser/0.28.1920.1052@0.28.1920.1052" timestamp="1604527304820" />
+    <state x="487" y="57" width="942" height="980" key="CommitChangelistDialog2" timestamp="1604533948866">
+      <screen x="0" y="28" width="1920" height="1052" />
+    </state>
+    <state x="487" y="57" width="942" height="980" key="CommitChangelistDialog2/0.28.1920.1052@0.28.1920.1052" timestamp="1604533948866" />
     <state x="444" y="186" width="1031" height="735" key="SettingsEditor" timestamp="1604527769196">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="444" y="186" width="1031" height="735" key="SettingsEditor/0.28.1920.1052@0.28.1920.1052" timestamp="1604527769196" />
-    <state x="661" y="239" width="598" height="566" key="find.popup" timestamp="1605127260250">
-      <screen x="0" y="0" width="1920" height="1043" />
+    <state x="558" y="287" width="800" height="534" key="Vcs.Push.Dialog.v2" timestamp="1604533982183">
+      <screen x="0" y="28" width="1920" height="1052" />
     </state>
-    <state x="661" y="239" width="598" height="566" key="find.popup/0.0.1920.1043@0.0.1920.1043" timestamp="1605127260250" />
-    <state x="623" y="260" width="672" height="684" key="search.everywhere.popup" timestamp="1604533682822">
+    <state x="558" y="287" width="800" height="534" key="Vcs.Push.Dialog.v2/0.28.1920.1052@0.28.1920.1052" timestamp="1604533982183" />
+    <state x="623" y="260" width="672" height="684" key="search.everywhere.popup" timestamp="1604533988200">
       <screen x="0" y="28" width="1920" height="1052" />
     </state>
     <state x="623" y="230" width="672" height="678" key="search.everywhere.popup/0.0.1920.1043@0.0.1920.1043" timestamp="1603809686478" />
-    <state x="623" y="260" width="672" height="684" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1604533682822" />
+    <state x="623" y="260" width="672" height="684" key="search.everywhere.popup/0.28.1920.1052@0.28.1920.1052" timestamp="1604533988200" />
   </component>
 </project>

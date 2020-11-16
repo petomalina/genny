@@ -17,7 +17,7 @@ func newOptions() options {
 	return options{}
 }
 
-func Dry(o *options) Option {
+func Dry() Option {
 	return func(o *options) {
 		o.dry = true
 	}
