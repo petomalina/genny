@@ -20,17 +20,33 @@ type ProtoModule struct {
 	//
 	// All protobuf imports are then relative to this includePath
 	// (Defaults to '')
-	IncludePath string `json:"includePath"`
+	IncludePath string `json:"includePath,omitempty"`
 }
 
 // API is a reference to a gRPC definition that was created by the user.
 type API struct {
-	Name    string
-	Version string
+	Name    string `json:"name"`
+	Version string `json:"version"`
+}
+
+// Service is a definition of an implementation of one or more API objects
+type Service struct {
+	Name string              `json:"name"`
+	APIs []APIImplementation `json:"apis"`
+}
+
+// APIImplementation defines an API that is implemented for a particular service
+// with its options
+type APIImplementation struct {
+	Name    string `json:"name"`
+	Version string `json:"version"`
+
+	HTTPGateway bool `json:"httpGateway,omitempty"`
 }
 
 type Config struct {
 	Project      string        `json:"project"`
 	APIs         []API         `json:"apis"`
+	Services     []Service     `json:"services"`
 	ProtoModules []ProtoModule `json:"protomodules"`
 }

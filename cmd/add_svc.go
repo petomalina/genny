@@ -18,24 +18,28 @@ package cmd
 import (
 	"errors"
 	"fmt"
+	"strings"
 
 	"github.com/spf13/cobra"
 )
 
 // svcCmd represents the svc command
 var svcCmd = &cobra.Command{
-	Use:   "svc <api>",
+	Use:   "svc <name> [<api>/<version>...]",
 	Short: "Adds a cmd_new microservice [into a specified cluster]",
 	Long:  ``,
 	Args: func(cmd *cobra.Command, args []string) error {
 		if len(args) < 1 {
-			return errors.New("please specify api to be implemented for the service")
+			return errors.New("please specify name of the service")
 		}
 
 		return nil
 	},
 	Run: func(cmd *cobra.Command, args []string) {
-		fmt.Println("svc called")
+		name := args[0]
+		apiNames := args[1:]
+
+		fmt.Println("svc called:" + name + ";" + strings.Join(apiNames, " "))
 	},
 }
 

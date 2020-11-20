@@ -19,6 +19,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/petomalina/genny/internal/cmd_api"
+	"github.com/petomalina/genny/internal/types"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -79,21 +80,19 @@ monitoring/v1/monitoring.proto (that will include the gRPC service def.)`,
 			return err
 		}
 
-		conf.APIs = append(conf.APIs, apiPath)
+		conf.APIs = append(conf.APIs, types.API{
+			Name:    apiName,
+			Version: apiVersion,
+		})
 		return writeConfig()
 	},
 }
 
 func init() {
 	addCmd.AddCommand(apiCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// apiCmd.PersistentFlags().String("foo", "", "A help for foo")
-
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
 	// apiCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+
+	apiCmd.Flags().Bool("http", false, "Allow HTTP JSON transcoding gateway")
 }
