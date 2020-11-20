@@ -19,6 +19,7 @@ import (
 	"fmt"
 	"github.com/petomalina/genny/internal/perform"
 	"github.com/spf13/cobra"
+	"path/filepath"
 )
 
 // protocCmd represents the protoc command
@@ -29,7 +30,7 @@ var protocCmd = &cobra.Command{
 	RunE: func(cmd *cobra.Command, args []string) error {
 		protomodules := ""
 		for _, m := range conf.ProtoModules {
-			protomodules += " -I" + m
+			protomodules += " -I" + filepath.Join(m.Path, m.IncludePath)
 		}
 
 		for _, svc := range conf.APIs {
@@ -39,7 +40,7 @@ var protocCmd = &cobra.Command{
 					"-Iproto -I." + protomodules,
 					fmt.Sprintf("proto/%s.proto", svc),
 				},
-				perform.Dry(),
+				perform.Dry(), perform.Logger(logger),
 			)
 			if err != nil {
 				return err
@@ -52,14 +53,4 @@ var protocCmd = &cobra.Command{
 
 func init() {
 	runCmd.AddCommand(protocCmd)
-
-	// Here you will define your flags and configuration settings.
-
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// protocCmd.PersistentFlags().String("foo", "", "A help for foo")
-
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// protocCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
 }

@@ -3,14 +3,16 @@ package perform
 import (
 	"fmt"
 	"github.com/fatih/color"
+	"go.uber.org/zap"
 	"os/exec"
 )
 
 type Option func(o *options)
 
 type options struct {
-	dry bool
-	dir string
+	dry    bool
+	dir    string
+	logger *zap.Logger
 }
 
 func newOptions() options {
@@ -29,6 +31,12 @@ func Dir(dir string) Option {
 	}
 }
 
+func Logger(l *zap.Logger) Option {
+	return func(o *options) {
+		o.logger = l
+	}
+}
+
 func Command(command string, args []string, oo ...Option) error {
 	// make the options first
 	var opts = newOptions()
@@ -41,7 +49,14 @@ func Command(command string, args []string, oo ...Option) error {
 		cmd.Dir = opts.dir
 	}
 
-	fmt.Println("Running: " + color.BlueString(cmd.String()))
+	if opts.logger != nil {
+		opts.logger.Info(
+			"Running command",
+			zap.String("cmd", color.BlueString(cmd.String())),
+			zap.String("dir", cmd.Dir),
+		)
+	}
+
 	// return early if we only want dry run
 	if opts.dry {
 		return nil

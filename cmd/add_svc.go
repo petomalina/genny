@@ -42,13 +42,11 @@ var svcCmd = &cobra.Command{
 func init() {
 	addCmd.AddCommand(svcCmd)
 
-	// Here you will define your flags and configuration settings.
+	svcCmd.Flags().Bool("http", false, "Allow HTTP JSON transcoding gateway")
 
-	// Cobra supports Persistent Flags which will work for this command
-	// and all subcommands, e.g.:
-	// svcCmd.PersistentFlags().String("foo", "", "A help for foo")
+	svcCmd.Flags().Bool("pubsub", false, "Allow Pub/Sub integration in xrpc")
 
-	// Cobra supports local flags which will only run when this command
-	// is called directly, e.g.:
-	// svcCmd.Flags().BoolP("toggle", "t", false, "Help message for toggle")
+	svcCmd.Flags().Bool("webrpc", false, "Allow WebRPC transcoder")
+
+	svcCmd.Flags().Bool("cloude-events", false, "Allow Cloud Events integration")
 }
