@@ -19,6 +19,7 @@ import (
 	"errors"
 	"fmt"
 	"github.com/petomalina/genny/internal/perform"
+	"github.com/petomalina/genny/internal/types"
 	"github.com/spf13/cobra"
 	"path/filepath"
 	"strings"
@@ -66,18 +67,22 @@ genny add proto github.com/protocolbuffers/protobuf src`,
 			"add",
 			moduleNameGit,
 			fmt.Sprintf("./apis/3rdparty/%s", filepath.Base(moduleName)),
-		})
+		}, perform.Logger(logger))
 		if err != nil {
 			return err
 		}
 
 		conf.ProtoModules = append(
 			conf.ProtoModules,
-			filepath.Join(
-				"3rdparty",
-				filepath.Base(moduleName),
-				includePath,
-			),
+			types.ProtoModule{
+				Repository: moduleNameGit,
+				Path: filepath.Join(
+					"3rdparty",
+					filepath.Base(moduleName),
+					includePath,
+				),
+				IncludePath: includePath,
+			},
 		)
 		return writeConfig()
 	},
