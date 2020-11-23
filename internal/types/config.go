@@ -45,8 +45,11 @@ type APIImplementation struct {
 }
 
 type Config struct {
-	Project      string        `json:"project"`
-	APIs         []API         `json:"apis"`
+	Project string `json:"project"`
+	APIs    []API  `json:"apis"`
+	// ServiceDir is a name of the directory all services should
+	// be generated in
+	ServiceDir   string        `json:"serviceDir"`
 	Services     []Service     `json:"services"`
 	ProtoModules []ProtoModule `json:"protomodules"`
 }

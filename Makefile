@@ -4,7 +4,7 @@ install:
 	go install .
 
 test: clean
-	genny new github.com/petomalina/genny/test && \
+	genny new github.com/petomalina/genny/test --service-dir=src && \
 	cd test && \
 	genny add proto github.com/googleapis/api-common-protos && \
 	genny add api health/v1 && \

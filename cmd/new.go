@@ -21,6 +21,7 @@ import (
 	"github.com/petomalina/genny/internal/cmd_new"
 	"github.com/petomalina/genny/internal/perform"
 	"github.com/spf13/cobra"
+	"github.com/spf13/viper"
 	"io/ioutil"
 	"os"
 	"path/filepath"
@@ -45,7 +46,7 @@ var newCmd = &cobra.Command{
 
 		folders := []string{
 			fmt.Sprintf("%s/infrastructure", projectName),
-			fmt.Sprintf("%s/services", projectName),
+			fmt.Sprintf("%s/%s", projectName, conf.ServiceDir),
 			fmt.Sprintf("%s/apis/proto", projectName),
 			fmt.Sprintf("%s/apis/go-sdk", projectName),
 			fmt.Sprintf("%s/apis/3rdparty", projectName),
@@ -84,7 +85,11 @@ var newCmd = &cobra.Command{
 			return err
 		}
 
-		fmt.Println(fmt.Sprintf("A new project '%s' was created, run 'cd %s' before you continue", projectName, projectName))
+		logger.Info(fmt.Sprintf(
+			"A new project '%s' was created, run 'cd %s' before you continue",
+			projectName,
+			projectName,
+		))
 
 		return writeConfig(projectName)
 	},
@@ -98,6 +103,9 @@ func init() {
 	// Cobra supports Persistent Flags which will work for this command
 	// and all subcommands, e.g.:
 	// newCmd.PersistentFlags().String("foo", "", "A help for foo")
+	newCmd.Flags().String("service-dir", "services", "Name of the directory where services will be generated")
+	viper.BindPFlag("serviceDir", newCmd.Flags().Lookup("service-dir"))
+	viper.SetDefault("serviceDir", "services")
 
 	// Cobra supports local flags which will only run when this command
 	// is called directly, e.g.:
