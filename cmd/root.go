@@ -84,6 +84,12 @@ func initConfig() {
 
 	viper.AutomaticEnv() // read in environment variables that match
 
+	// set defaults so we don't generate null values. This is needed
+	// for any slices and maps we don't want to emit
+	conf.Services = []types.Service{}
+	conf.ProtoModules = []types.ProtoModule{}
+	conf.APIs = []types.API{}
+
 	// If a config file is found, read it in.
 	err := viper.ReadInConfig()
 	if err != nil && !strings.Contains(err.Error(), "Not Found") {
